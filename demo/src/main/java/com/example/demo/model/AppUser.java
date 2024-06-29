@@ -18,7 +18,8 @@ public class AppUser implements UserDetails {
     private String lastName;
     private String username;
     private String password;
-    @Enumerated(value = EnumType.STRING)
+
+    @Enumerated(EnumType.STRING)
     AppUserRole appUserRole;
 
     public Integer getId() {
@@ -44,10 +45,6 @@ public class AppUser implements UserDetails {
     public void setLastName(String lastName) {
         this.lastName = lastName;
     }
-
-//    public String getUsername() {
-//        return username;
-//    }
 
     public void setUsername(String username) {
         this.username = username;
@@ -94,11 +91,11 @@ public class AppUser implements UserDetails {
         this.password = password;
     }
 
-    public AppUserRole getRole() {
+    public AppUserRole getAppUserRole() {
         return appUserRole;
     }
 
-    public void setRole(AppUserRole appUserRole) {
+    public void setAppUserRole(AppUserRole appUserRole) {
         this.appUserRole = appUserRole;
     }
 }
