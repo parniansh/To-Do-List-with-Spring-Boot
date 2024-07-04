@@ -24,16 +24,11 @@ public class AuthenticationService {
         appUser.setLastName(requestUser.getLastName());
         appUser.setUsername(requestUser.getUsername());
         appUser.setPassword(passwordEncoder.encode(requestUser.getPassword()));
-//        appUser.setPassword(appUser.getPassword());
-//        System.out.println("resuest isssssssss  " + requestUser.getPassword());
         appUser.setAppUserRole(requestUser.getAppUserRole());
 
         appUserRepository.save(appUser);
 
         String token = jwtService.generateToken(appUser);
-//        appUserRepository.save(requestUser);
-
-//        String token = jwtService.generateToken(requestUser);
 
         return new AuthenticationResponse(token);
 
