@@ -1,8 +1,6 @@
 package com.example.demo.service;
 
 import com.example.demo.model.AppUser;
-import com.example.demo.model.JwtToken;
-import com.example.demo.repository.JwtTokenRepository;
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.io.Decoders;
@@ -19,11 +17,6 @@ public class JwtService {
 
     private String SECRET_KEY = "78cbc5292de1fd6d4c3a58553b94c267f3f2db2e7ebea53f37d66b86a18c0c03";
 
-    public JwtService(JwtTokenRepository jwtTokenRepository) {
-        this.jwtTokenRepository = jwtTokenRepository;
-    }
-
-    private JwtTokenRepository jwtTokenRepository;
 
     private Claims extractAllClaims(String token) {
         return Jwts
@@ -70,10 +63,7 @@ public class JwtService {
                 .signWith(getSigninKey())
                 .compact();
 
-        // save token
-        JwtToken jwtToken = new JwtToken(appUser.getId(), extractExpiration(token), extractIssued(token));
-        jwtTokenRepository.save(jwtToken);
-        return token;
+            return token;
     }
 
     private SecretKey getSigninKey() {
