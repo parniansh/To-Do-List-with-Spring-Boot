@@ -19,7 +19,6 @@ public class AuthenticationController {
     public ResponseEntity<AuthenticationResponse> register(
             @RequestBody AppUser request
             ){
-        System.out.println("request isssssssss  " + request.getAppUserRole());
           return ResponseEntity.ok(authenticationService.register(request));
     }
 

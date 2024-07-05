@@ -21,6 +21,8 @@ public class AppUser implements UserDetails {
 
     @Enumerated(EnumType.STRING)
     AppUserRole appUserRole;
+    @OneToMany(mappedBy = "appUser")
+    private List<Item> items;
 
     public Integer getId() {
         return id;
