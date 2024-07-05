@@ -24,6 +24,8 @@ public class AppUser implements UserDetails {
     @OneToMany(mappedBy = "appUser")
     private List<Item> items;
 
+    @OneToMany(mappedBy = "appUser")
+    private List<Item> jwtToken;
     public Integer getId() {
         return id;
     }

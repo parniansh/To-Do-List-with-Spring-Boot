@@ -29,10 +29,4 @@ public class AuthenticationController {
         return ResponseEntity.ok(authenticationService.authenticate(request));
     }
 
-//    @PostMapping("/register")
-//    public void register(
-//            HttpRequest request){
-//        System.out.println("resuest isssssssss  " + request.toString());
-//    }
-
 }
