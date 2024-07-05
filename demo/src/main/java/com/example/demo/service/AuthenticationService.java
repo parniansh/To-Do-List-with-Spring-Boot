@@ -1,5 +1,6 @@
 package com.example.demo.service;
 
+import com.example.demo.exceptionHandler.UsernameTakenException;
 import com.example.demo.model.AppUser;
 import com.example.demo.model.AuthenticationResponse;
 import com.example.demo.repository.AppUserRepository;
@@ -19,6 +20,12 @@ public class AuthenticationService {
 
 
     public AuthenticationResponse register(AppUser requestUser){
+        boolean userExists = appUserRepository
+                .findByUsername(requestUser.getUsername())
+                .isPresent();
+        if (userExists) {
+            throw new UsernameTakenException("Username is already Taken");
+        }
         AppUser appUser = new AppUser();
         appUser.setFirstName(requestUser.getFirstName());
         appUser.setLastName(requestUser.getLastName());
